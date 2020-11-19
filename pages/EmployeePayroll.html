@@ -36,21 +36,53 @@
                     value="../assets/man.jpg" required>
                     <img class="profile"™ id='imagel1' src="../assets/man.jpg" width="50px" height="auto"> 
                 </label>
-            <label> 
-                <input type="radio" id="profile2" name="profile" 
-                value="../assets/man.jpg" required> 
-                <img class="profile" id='image2' src="../assets/woman.jpg" width="50px" height="auto"> 
-            </label> 
-            <label> 
-                <input type="radio" id="profile3" name="profile"
-                value="../assets/man.jpg" required> 
-                <img class="profile" id='image3' src="../assets/man2.jpg" width="50px" height="auto"> 
-            </label> 
-            <label> 
-                <input type="radio" id="profile4" name="profile" 
-                value="../assets/man.jpg" required> 
-                <img class="profile" id='image4' src="../assets/woman2.jpg" width="50px" height="auto">
-            </label>
+                <label> 
+                    <input type="radio" id="profile2" name="profile" 
+                    value="../assets/man.jpg" required> 
+                    <img class="profile" id='image2' src="../assets/woman.jpg" width="50px" height="auto"> 
+                </label> 
+                <label> 
+                    <input type="radio" id="profile3" name="profile"
+                    value="../assets/man.jpg" required> 
+                    <img class="profile" id='image3' src="../assets/man2.jpg" width="50px" height="auto"> 
+                </label> 
+                <label> 
+                    <input type="radio" id="profile4" name="profile" 
+                    value="../assets/man.jpg" required> 
+                    <img class="profile" id='image4' src="../assets/woman2.jpg" width="50px" height="auto">
+                </label>
+            </div>
+        </div>
+        <!--UC4-->
+        <div class="row-content">
+            <label class="label text" for="gender">Gender</label>
+            <div>
+                <input type="radio" id="male" name="gender" value="male">
+                <label class="text" for="male">Male</label>
+                <input type="radio" id="female" name="gender" value="female">
+                <label class="text" for="female">Female</label>
+            </div>
+        </div>
+        <div class="row-content">
+            <label class="label text" for="department">Department</label>
+            <div>
+                <input class="checkbox" type="checkbox" id="hr" name="hr" value="HR">
+                <label class="text" for="hr'"'>HR</label>
+                <input class="checkbox" type="checkbox" id="sales" name="Sales" value="Sales">
+                <label class="text" for="sales">Sales</label>
+                <input class="checkbox" type="checkbox" id="finance" name="finance" value="Finance">
+                <label class="text" for="finance">Finance</label>
+                <input class="checkbox" type="checkbox" id="engineer" name="engineer" value="Engineer">
+                <label class="text" for="engineer">Engineer</label>
+                <input class="checkbox" type="checkbox" id="others" name="others" value="Others">
+                <label class="text" for="others">0thers</label>
+            </div>
+        </div>
+        <div class="row-content">
+            <label class="label text" for="salary">Choose your salary: </label>
+            <input class="input" type="range" name="Salary" id="Salary" min="300000"
+            max="500000" step="100" value="400000">
+            <output class="Salary—-output text" for="salary">400000</output>
         </div>
     </form>
 </div>
