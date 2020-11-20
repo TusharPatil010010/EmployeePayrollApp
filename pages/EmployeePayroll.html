@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang = "en">
     <head>
+<<<<<<< HEAD
         <meta charset = "UTF-8">
         <meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
         <title>Employee Payroll Form</title>
@@ -8,6 +9,16 @@
         <link rel = "stylesheet" href = "https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600&display=swap">
     </head>
     <body>
+=======
+        <meta charset = "utf-8">
+        <meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
+        <title>Employee Payroll Name</title>
+        <link rel = "stylesheet" href = "../css/EmployeePayroll.css">
+        <link rel = "stylesheet" href = "https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600&display=swap">
+    </head>
+    <body>
+        <!--UC1-->
+>>>>>>> 61dca778943771e2ab6e46b432e8465cee46cb0c
         <header class = "header-content header">
             <div class = "logo-content">
                 <img src = "../assets/images/logo.png" alt = "">
@@ -17,6 +28,7 @@
                 </div>
             </div>
         </header>
+<<<<<<< HEAD
         <div class ="form-content">
             <form class = "form" action = "#" onsubmit = "save(event)">
                 <div class = "form-head">Employee Payroll Form</div>
@@ -25,6 +37,21 @@
                     <input class ="input" type ="text" id = "name" name ="name" placeholder = "Enter your name" required>
                     <error-output class = "text-error" for = "name"></error-output>
                 </div>
+=======
+        <!--UC2-->
+        <div class="form-content">
+            <form class="form" action="#" onsubmit="createEmployeePayrollData">
+            <div class="form-head">
+                Employee Payroll Form </div>
+                <div class="row-content">
+                <label class="label text"
+                for ="name">Name</label>
+                <input class="input"  id="name" name="name" 
+                placeholder="Enter name here" required>
+                <error-output class="text-error" for ="name"></error-output>
+                </div>
+                <!--UC3-->
+>>>>>>> 61dca778943771e2ab6e46b432e8465cee46cb0c
                 <div class = "row-content">
                     <label class = "label text" for = "profile">Profile Image</label>
                     <div class = "profile-radio-content">
@@ -59,6 +86,7 @@
                         <label class = "text" for = "female">Female</label>                       
                     </div>
                 </div>
+<<<<<<< HEAD
                 <div class = "row-content">
                     <label class = "label text" for = "department">Department</label>
                     <div>
@@ -77,12 +105,39 @@
                 <div class = "row-content">
                     <label class = "label text" for = "salary">Choose your salary:</label>
                     <input class = "input" type = "range" min = "300000" max = "500000" step = "100"
+=======
+                <!--UC4-->
+                <div class = "row-content">
+                    <label class = "label text" for = "department">Department</label>
+                    <div>
+                        <input class = "checkbox" type = "checkbox" id = "hr" name = "hr" value = "HR">
+                        <label class = "text" for = "hr">HR</label>
+                        <input class = "checkbox" type = "checkbox" id = "sales" name = "sales" value = "Sales">
+                        <label class = "text" for = "sales">Sales</label>
+                        <input class = "checkbox" type = "checkbox" id = "finance" name = "finance" value = "Finance">
+                        <label class = "text" for = "finance">Finance</label>
+                        <input class = "checkbox" type = "checkbox" id = "engineer" name = "engineer" value = "Engineer">
+                        <label class = "text" for = "engineer">Engineer</label>
+                        <input class = "checkbox" type = "checkbox" id = "others" name = "others" value = "Others">
+                        <label class = "text" for = "others">Others</label>
+                    </div>
+                    <!--UC5-->
+                </div>
+                <div class = "row-content">
+                    <label class = "label text" for = "salary">Choose your salary:</label>
+                    <input class = "slider" type = "range" min = "300000" max = "500000" step = "100"
+>>>>>>> 61dca778943771e2ab6e46b432e8465cee46cb0c
                            name = "salary" id = "salary" value = "400000">
                     <output class = "salary-output text" for = "salary">400000</output>
                 </div>
                 <div class = "row-content">
+<<<<<<< HEAD
                     <label class = "label text" for = "startDate">Start Date</label>
                     <div id="date">
+=======
+                    <label class = "label text" for = "startDate">StartDate</label>
+                    <div>
+>>>>>>> 61dca778943771e2ab6e46b432e8465cee46cb0c
                         <select id = "day" name ="Day">
                             <option value = "1">1</option>
                             <option value = "2">2</option>
@@ -92,6 +147,7 @@
                             <option value = "6">6</option>
                             <option value = "7">7</option>
                             <option value = "8">8</option>
+<<<<<<< HEAD
                             <option value = "9">9</option>
                             <option value = "10">10</option>
                             <option value = "11">11</option>
@@ -115,6 +171,31 @@
                             <option value = "29">29</option>
                             <option value = "30">30</option>
                             <option value = "31">31</option>
+=======
+                            <option value = "1">9</option>
+                            <option value = "1">10</option>
+                            <option value = "1">11</option>
+                            <option value = "1">12</option>
+                            <option value = "1">13</option>
+                            <option value = "1">14</option>
+                            <option value = "1">15</option>
+                            <option value = "1">16</option>
+                            <option value = "1">17</option>
+                            <option value = "1">18</option>
+                            <option value = "1">19</option>
+                            <option value = "1">20</option>
+                            <option value = "1">21</option>
+                            <option value = "1">22</option>
+                            <option value = "1">23</option>
+                            <option value = "1">24</option>
+                            <option value = "1">25</option>
+                            <option value = "1">26</option>
+                            <option value = "1">27</option>
+                            <option value = "1">28</option>
+                            <option value = "1">29</option>
+                            <option value = "1">30</option>
+                            <option value = "1">31</option>
+>>>>>>> 61dca778943771e2ab6e46b432e8465cee46cb0c
                         </select>
                         <select id = "month" name = "Month">
                             <option value = "Jan">January</option>
@@ -136,11 +217,18 @@
                             <option value = "2018">2018</option>
                             <option value = "2017">2017</option>
                             <option value = "2016">2016</option>
+<<<<<<< HEAD
                             <option value = "2015">2015</option>
                         </select>
                     </div>
                     <error-output class = "date-error" for = "date"></error-output>
                 </div>
+=======
+                        </select>
+                    </div>
+                </div>
+                <!--UC6-->
+>>>>>>> 61dca778943771e2ab6e46b432e8465cee46cb0c
                 <div class = "row-content">
                     <label class = "label text" for = "notes">Notes</label>
                     <textarea class = "input" id = "notes" name = "notes"
@@ -149,12 +237,22 @@
                 <div class = "buttonParent">
                     <a href = "./home.html" class = "resetButton button cancelButton">Cancel</a>
                     <div class = "submit-reset">
+<<<<<<< HEAD
                         <button type = "submit" value = "Submit" class = "button submitButton" id = "submitButton">Submit</button>
+=======
+                        <button type = "submit" class = "button submitButton" id = "submitButton">Submit</button>
+>>>>>>> 61dca778943771e2ab6e46b432e8465cee46cb0c
                         <button type = "reset" class = "resetButton button">Reset</button>
                     </div>
                 </div>
             </form>
+<<<<<<< HEAD
         </div>  
         <script src = "../js/PayrollForm.js"></script>                          
     </body> 
 </html>
+=======
+        </div>
+        <script src="../js/PayrollForm.js"></script>
+    </body>
+>>>>>>> 61dca778943771e2ab6e46b432e8465cee46cb0c
