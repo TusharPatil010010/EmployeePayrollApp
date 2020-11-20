@@ -1,11 +1,14 @@
+let employeePayrollList;
 window.addEventListener('DOMContentLoaded', (event) => {
+    employeePayrollList = getEmployeePayrollDataFromStorage();
+    document.querySelector('.emp-count').textContent = employeePayrollList.length;
     createInnerHtml();
 });
 
 const createInnerHtml = () => {
     const headerHtml = "<tr><th></th><th>Name</th><th>Gender</th><th>Department</th><th>Salary</th><th>StartDate</th><th>Actions</th></tr>";
     let innerHtml = `${headerHtml}`;
-    let employeePayrollList =  createEmployeePayrollJSON();
+    if(employeePayrollList.length == 0) return;
     for(const empPayrollData of employeePayrollList){
         innerHtml = `${innerHtml}
         <tr> 
@@ -14,7 +17,7 @@ const createInnerHtml = () => {
             <td>${empPayrollData._gender}</td>
             <td>${getDeptHtml(empPayrollData._department)}</td>
             <td>${empPayrollData._salary}</td>
-            <td>${empPayrollData._startDate}</td>
+            <td>${stringifyDate(empPayrollData._startDate)}</td>
             <td>
                 <img name = "${empPayrollData._id}" src = "../assets/icons/delete-black-18dp.svg" onclick = "remove(this)" alt = "delete">
                 <img name = "${empPayrollData._id}" src = "../assets/icons/create-black-18dp.svg" onclick = "update(this)" alt = "edit">
@@ -25,41 +28,13 @@ const createInnerHtml = () => {
     document.querySelector('#table-display').innerHTML = innerHtml;
 }
 const getDeptHtml = (deptList) => {
-    let deptHtml ='';
+    let deptHtml =``;
     for (const dept of deptList){
         deptHtml = `${deptHtml}<div class = "dept-label">${dept}</div>`;
     }
     return deptHtml;
 }
 
-
-createEmployeePayrollJSON = () =>{
-    let employeePayrollList = [
-        {
-            _name : 'Shakira',
-            _gender: 'Female',
-            _department: [
-                'HR',
-                'Finance'
-            ],
-            _salary: '300000',
-            _startDate: '5 September 2020',
-            _note: '',
-            _id: new Date().getTime(),
-            _profilePic:  '../assets/profile-images/Ellipse 1.png'
-        },
-        {
-            _name : 'Akon',
-            _gender: 'Male',
-            _department: [
-                'Engineering',
-            ],
-            _salary: '400000',
-            _startDate: '1 March 2020',
-            _note: '',
-            _id: new Date().getTime(),
-            _profilePic:  '../assets/profile-images/Ellipse -5.png'
-        }
-    ];
-    return employeePayrollList;
+const getEmployeePayrollDataFromStorage = () =>{
+    return localStorage.getItem('EmployeePayrollList') ? JSON.parse(localStorage.getItem('EmployeePayrollList')) : [];
 }
