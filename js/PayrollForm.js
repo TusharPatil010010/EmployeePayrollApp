@@ -24,10 +24,28 @@ class EmployeePayrollData {
         this._startDate = startDate;
     }
 
+    get profilePic(){ return this._gender;}
+    set gender(gender){
+        this._gender = gender;
+    }
+
+    get department(){ return this._departmnet;}
+    set department(department){
+        this._departmnet = department;
+    }
+
+    get note(){ return this._note;}
+    set note(note){
+        this._note = note;
+    }
+
     toString() {
         const options = {year : 'numeric', month : 'long', day : 'numeric'};
-        return "id = " + this.id + ", name = " + this.name + ", salary = " + this.salary + 
-               ", start date = " + new Date(this.startDate);
+        const empDate = this.startDate === undefined ? "undefined" : 
+        this.startDate.toLocaleDateString("en-US", options);
+        return "id = " + this.id + ", name = " + this.name + ", gender=" +this.gender +
+        ", profilePic= " + this.profilePic +", startDate=" + empDate +", note=" + this.note;      
+               
     }
 }
 
