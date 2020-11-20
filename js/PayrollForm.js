@@ -1,15 +1,12 @@
-const salary = document.querySelector('#salary');
-const output = document.querySelector('.salary-output');
-output.textContent = salary.value;
-salary.addEventListener('input', function(){
-    output.textContent = salary.value;
-});
-
 class EmployeePayrollData {
 
     get name() { return this._name; }
     set name(name) {
+        const nameRegex = RegExp('^[A-Z]{1}[a-zA-Z\\s]{2,}$');
+        if (nameRegex.test(name)) {
             this._name = name;
+        }
+        else throw 'Name is incorrect!';
     }
 
     get id() { return this._id}
@@ -36,7 +33,13 @@ class EmployeePayrollData {
 
 const createEmployeePayrollData = () => {
     let employeePayrollData = new EmployeePayrollData();
-    employeePayrollData.name = getInputValueById('#name')
+    try{
+        employeePayrollData.name = getInputValueById('#name')
+    }
+    catch(e){
+        setTextValue('.text-error', e);
+        throw e
+    }
     employeePayrollData.salary = getInputValueById('#salary');
     let date = getInputValueById('#day') + " " + getInputValueById('#month') + " " +
                getInputValueById('#year');
@@ -49,3 +52,26 @@ const getInputValueById = (id) => {
     let value = document.querySelector(id).value;
     return value;
 }
+
+const salary = document.querySelector('#salary');
+const output = document.querySelector('.salary-output');
+output.textContent = salary.value;
+salary.addEventListener('input', function(){
+    output.textContent = salary.value;
+});
+
+const textError = document.querySelector('#text-error');
+const name = document.querySelector('#name');
+name.addEventListener('input', function(){
+        if(name.value.length == 0){
+        textError.textContent = "";
+        return;
+    }
+    try{
+        (new EmployeePayrollData()).name = name.value;
+        textError.textContent = "";
+    }catch(e){
+        textError.textContent = e;
+    }
+});
+
