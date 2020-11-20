@@ -1,4 +1,4 @@
-  class EmployeePayrollData {
+class EmployeePayrollData {
     get name() { return this._name; }
     set name(name) {
         const nameRegex = RegExp('^[A-Z]{1}[a-zA-Z\\s]{2,}$');
@@ -33,7 +33,7 @@
     }
     get note(){ return this._note;}
     set note(note){
-        this.note = note;
+        this._note = note;
     }
     get startDate() { return this._startDate}
     set startDate(startDate){
@@ -51,15 +51,15 @@
         const options = {year : 'numeric', month : 'long', day : 'numeric'};
         const empDate = this.startDate === undefined ? "undefined" : 
             this.startDate.toLocaleDateString("en-US", options);
-        return "name = " + this.name + ", gender="+this.gender+
-                ", profilePic="+this.profilePic+", department="+this.department+", salary = " 
-                + this.salary + ", start date = " + empDate+", note="+this.note;
+        return "name = " + this._name + ", gender="+this._gender+
+                ", profilePic="+this._profilePic+", department="+this._department+", salary = " 
+                + this._salary + ", start date = " + this._empDate+", note="+this._note;
     }
 }
 
 
 window.addEventListener('DOMContentLoaded', () => {
-    
+    // Event listener for salary
     const salary = document.querySelector('#salary');
     const output = document.querySelector('.salary-output');
     output.textContent = salary.value;
@@ -67,6 +67,7 @@ window.addEventListener('DOMContentLoaded', () => {
         output.textContent = salary.value;
     });
     
+    //Event listener for name
     const name = document.querySelector('#name');
     const textError = document.querySelector('.text-error');
     name.addEventListener('input', function(){
@@ -82,6 +83,7 @@ window.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    //Event listener for date
     const date = document.querySelector('#date');
     const dateError = document.querySelector('.date-error');
     date.addEventListener('input', function() {
@@ -93,16 +95,31 @@ window.addEventListener('DOMContentLoaded', () => {
             dateError.textContent = e;
         }
     });
+
+
 });
 
 const save = () => {
     try{
         let employeePayrollData = createEmployeePayrollData();
+        createAndUpdateStorage(employeePayrollData);
     }catch(e){
         return;
     }
 }
 
+function createAndUpdateStorage(employeePayrollData){
+    let employeePayrollList = JSON.parse(localStorage.getItem("EmployeePayrollList"));
+    if(employeePayrollList != undefined){
+        employeePayrollList.push(employeePayrollData);
+    } else{
+        employeePayrollList = [employeePayrollData];
+    }
+    alert(employeePayrollList.toString());
+    localStorage.setItem("EmployeePayrollList", JSON.stringify(employeePayrollList));
+}
+
+//Creating employee payroll object
 const createEmployeePayrollData = () => {
     let employeePayrollData = new EmployeePayrollData();
     try{
@@ -112,9 +129,9 @@ const createEmployeePayrollData = () => {
         setTextValue('.text-error', e);
         throw e
     }
-    employeePayrollData.profilePic = getSelectedValues('[name= profile]').pop();
-    employeePayrollData.gender = getSelectedValues('[name= gender]').pop();
-    employeePayrollData.department = getSelectedValues('[name= department]');
+    employeePayrollData.profilePic = getSelectedValues('[name = profile]').pop();
+    employeePayrollData.gender = getSelectedValues('[name = gender]').pop();
+    employeePayrollData.department = getSelectedValues('[name = department]');
     employeePayrollData.salary = getInputValueById('#salary');
     let date = getInputValueById('#day') + " " + getInputValueById('#month') + " " +
                getInputValueById('#year');
@@ -123,7 +140,6 @@ const createEmployeePayrollData = () => {
     alert(employeePayrollData.toString());
     return employeePayrollData;
 }
-
 const getSelectedValues = (propertyValue) => {
     let allItems = document.querySelectorAll(propertyValue);
     let setItems = [];
@@ -134,7 +150,6 @@ const getSelectedValues = (propertyValue) => {
     });
     return setItems;
 }
-
 const getInputValueById = (id) => {
     let value = document.querySelector(id).value;
     return value;
