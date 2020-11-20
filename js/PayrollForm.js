@@ -42,8 +42,8 @@ const createEmployeePayrollData = () => {
     }
     employeePayrollData.salary = getInputValueById('#salary');
     let date = getInputValueById('#day') + " " + getInputValueById('#month') + " " +
-               getInputValueById('#year');
-    employeePayrollData.startDate = Date.parse(date);
+    getInputValueById('#year');
+    employeePayrollData.date = Date.parse(date);
     alert(employeePayrollData.toString());
     return employeePayrollData;
 }
@@ -75,3 +75,14 @@ name.addEventListener('input', function(){
     }
 });
 
+const date = document.querySelector('#date');
+const dateError = document.querySelector('.date-error');
+date.addEventListener('input', function() {
+    const startDate = new Date(Date.parse(getInputValueById('#day') + " " + getInputValueById('#month')+" "+getInputValueById('#year')));
+    try{
+        (new EmployeePayrollData()).startDate = startDate;
+        dateError.textContent = "";
+    }catch(e){
+        dateError.textContent = e;
+    }
+});
