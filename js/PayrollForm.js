@@ -37,23 +37,16 @@ class EmployeePayrollData {
     }
     get startDate() { return this._startDate}
     set startDate(startDate){
-        let now = new Date();
-        if(startDate > now) {
-            throw 'Start Date is a Future Date!';
-        }
-        var diff = Math.abs(now.getTime() - startDate.getTime());
-        if(diff / (1000 * 60 * 60 * 24) > 30)
-            throw 'Start Date is beyond 30 days!';
-        this._startDate = startDate;
+            startDate = new Date(startDate);
+            this._startDate = startDate;
     }
     
     toString() {
         const options = {year : 'numeric', month : 'long', day : 'numeric'};
-        const empDate = this.startDate === undefined ? "undefined" : 
-            this.startDate.toLocaleDateString("en-US", options);
+        (new Date(this.startDate)).toLocaleDateString("en-US", options);
         return "name = " + this._name + ", gender="+this._gender+
                 ", profilePic="+this._profilePic+", department="+this._department+", salary = " 
-                + this._salary + ", start date = " + this._empDate+", note="+this._note;
+                + this._salary + ", start date = " + this.startDate+", note="+this._note;
     }
 }
 
@@ -82,21 +75,6 @@ window.addEventListener('DOMContentLoaded', () => {
             textError.textContent = e;
         }
     });
-
-    //Event listener for date
-    const date = document.querySelector('#date');
-    const dateError = document.querySelector('.date-error');
-    date.addEventListener('input', function() {
-        const startDate = new Date(Date.parse(getInputValueById('#day') + " " + getInputValueById('#month')+" "+getInputValueById('#year')));
-        try{
-            (new EmployeePayrollData()).startDate = startDate;
-            dateError.textContent = "";
-        }catch(e){
-            dateError.textContent = e;
-        }
-    });
-
-
 });
 
 const save = () => {
@@ -135,7 +113,7 @@ const createEmployeePayrollData = () => {
     employeePayrollData.salary = getInputValueById('#salary');
     let date = getInputValueById('#day') + " " + getInputValueById('#month') + " " +
                getInputValueById('#year');
-    employeePayrollData.date = Date.parse(date);
+    employeePayrollData.startDate = Date.parse(date);
     employeePayrollData.note = getInputValueById('#notes');
     alert(employeePayrollData.toString());
     return employeePayrollData;
