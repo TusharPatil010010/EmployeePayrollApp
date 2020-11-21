@@ -48,3 +48,10 @@ const remove = (node) => {
     document.querySelector(".emp-count").textContent = employeePayrollList.length;
     createInnerHtml();
 } 
+
+window.addEventListener('DOMContentLoaded', (event) => {
+    employeePayrollList = getEmployeePayrollDataFromStorage();
+    document.querySelector(".emp-count").textContent = employeePayrollList.length;
+    createInnerHtml();
+    localStorage.removeItem('editEmp');
+});
