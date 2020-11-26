@@ -1,5 +1,5 @@
-    let isUpdate = false;
-    let employeePayrollObj = {};
+let isUpdate = false;
+let employeePayrollObj = {};
 
 class EmployeePayrollData {
     get name() { return this._name; }
