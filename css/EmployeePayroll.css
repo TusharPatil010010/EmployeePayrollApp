@@ -104,6 +104,14 @@ label{
     border-radius: 4px;
     resize: vertical;
 }
+
+.slider{
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+}
 /* UC3 */
 .profile-radio-content{
     display: flex;

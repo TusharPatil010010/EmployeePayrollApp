@@ -63,7 +63,7 @@ html body{
     padding-bottom: 25px;
 }
 
-.emp-details-text{
+.emp-detail-text{
     display: flex;
     align-items: center;
     justify-content: space-between;
